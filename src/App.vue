@@ -1,16 +1,19 @@
 <template>
   <div id="app">
     <CreateUser msg="new user" />
+    <GetUser msg="dftynft" />
   </div>
 </template>
 
 <script>
 import CreateUser from "./components/CreateUser.vue";
+import GetUser from "./components/GetUser.vue";
 
 export default {
   name: "App",
   components: {
     CreateUser,
+    GetUser,
   },
 };
 </script>

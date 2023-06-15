@@ -31,27 +31,12 @@ export default {
     };
   },
 
-  created() {
-    this.getUsers();
-  },
   methods: {
     createUser() {
       console.log(this.user);
       fetch("http://localhost:3001/user", {
         method: "POST",
         body: JSON.stringify(this.user),
-        headers: {
-          Accept: "application/json",
-          "Content-type": "application/json",
-        },
-      })
-        .then((res) => res.json())
-        .then((data) => console.log(data));
-    },
-
-    getUsers() {
-      fetch("http://localhost:3001/user", {
-        method: "GET",
         headers: {
           Accept: "application/json",
           "Content-type": "application/json",
