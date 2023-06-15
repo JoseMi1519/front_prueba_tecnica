@@ -1,7 +1,7 @@
 <template>
   <div id="app">
-    <CreateUser msg="new user" />
-    <GetUser msg="dftynft" />
+    <CreateUser v-if="true" sg="new user" />
+    <GetUser v-if="false" msg="dftynft" />
   </div>
 </template>
 
