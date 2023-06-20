@@ -1,18 +1,67 @@
 <template>
-  <div class="hello">
-    <form @submit.prevent="createUser">
-      <h1>{{ msg }}</h1>
-      <h3>Name:</h3>
-      <input v-model="user.name" />
-      <h3>Email:</h3>
-      <input v-model="user.email" />
-      <h3>Phone:</h3>
-      <input v-model="user.phone" />
-      <h3>Password:</h3>
-      <input v-model="user.password" /><br />
-      <button>Create</button>
-    </form>
-  </div>
+  <section class="container fluid">
+    <article class="d-flex align-float-start justify-content-start">
+      <img
+        class="img-user d-flex img-fluid rounded-cicle"
+        src="../assets/representaciones-experiencia-usuario-diseno-interfaz.jpg"
+        alt="imagen usuario"
+      />
+    </article>
+    <article
+      class="form-container d-flex align-items-center justify-content-center"
+    >
+      <div class="col-md-6">
+        <form class="row" @submit.prevent="createUser">
+          <div class="mb-4">
+            <u
+              ><strong>{{ msg }}</strong></u
+            >
+          </div>
+          <div class="col-md-12 mb-3">
+            <label for="nameInput" class="form-label">Nombre</label>
+            <input
+              type="text"
+              class="form-control"
+              id="nameInput"
+              v-model="user.name"
+            />
+          </div>
+          <div class="col-md-12 mb-3">
+            <label for="emailInput" class="form-label">Email</label>
+            <input
+              type="email"
+              class="form-control"
+              id="emailInput"
+              v-model="user.email"
+            />
+          </div>
+          <div class="col-md-12 mb-3">
+            <label for="phoneInput" class="form-label">Teléfono</label>
+            <input
+              type="text"
+              class="form-control"
+              id="phoneInput"
+              v-model="user.phone"
+            />
+          </div>
+          <div class="col-md-12 mb-3">
+            <label for="passwordInput" class="form-label">Contraseña</label>
+            <input
+              type="password"
+              class="form-control"
+              id="passwordInput"
+              v-model="user.password"
+            />
+          </div>
+          <div class="col-12">
+            <button type="submit" class="button-create btn btn-info">
+              Crear
+            </button>
+          </div>
+        </form>
+      </div>
+    </article>
+  </section>
 </template>
 
 <script>
@@ -55,18 +104,48 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-h3 {
-  margin: 40px 0 0;
+.button-create {
+  margin-top: 1rem;
+  background-color: rgb(89, 184, 176);
+  font-weight: 100;
 }
-ul {
-  list-style-type: none;
-  padding: 0;
+.img-user {
+  height: 60%;
+  margin-left: 5rem;
+  margin-top: 1rem;
+  border-radius: 20px;
+  opacity: 0.7;
 }
-li {
-  display: inline-block;
-  margin: 0 10px;
+.container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0rem;
+  height: 500px;
+  background-image: linear-gradient(pink, rgb(104, 104, 236) 60%);
 }
-a {
-  color: #42b983;
+
+.form-container {
+  margin-top: 2rem;
+  margin-bottom: 3rem;
+  max-height: 55%;
+  padding: 0rem;
+  margin-right: 2rem;
+}
+
+.form-label {
+  margin: 0rem;
+  padding: 0rem;
+  font-size: small;
+}
+
+.mb-4 {
+  margin-bottom: 1rem;
+  font-size: large;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+}
+
+.button-create {
+  font-size: small;
+  padding-inline: 2rem;
 }
 </style>

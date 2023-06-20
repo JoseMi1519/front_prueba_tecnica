@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <CreateUser v-if="true" sg="new user" />
+    <CreateUser v-if="true" msg="Nuevo usuario" />
     <GetUser v-if="false" msg="dftynft" />
   </div>
 </template>
@@ -24,7 +24,9 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+  height: 700px;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  padding-top: 0;
 }
 </style>

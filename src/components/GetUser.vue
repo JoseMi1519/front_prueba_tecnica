@@ -24,6 +24,7 @@
 
 <script>
 import usersList from "../../getUsersResponse.json";
+
 export default {
   data() {
     return {
@@ -39,16 +40,16 @@ export default {
     getUsers() {
       this.users = usersList.users;
       console.log(usersList);
+      // fetch("http://localhost:3001/user", {
+      //   method: "GET",
+      //   headers: {
+      //     Accept: "application/json",
+      //     "Content-type": "application/json",
+      //   },
+      // })
+      //   .then((res) => res.json())
+      //   .then((data) => console.log(data));
     },
-    // fetch("http://localhost:3001/user", {
-    //   method: "GET",
-    //     headers: {
-    //       Accept: "application/json",
-    //       "Content-type": "application/json",
-    //     },
-    //   })
-    //     .then((res) => res.json())
-    //     .then((data) => console.log(data));
   },
 
   name: "GetUser",
