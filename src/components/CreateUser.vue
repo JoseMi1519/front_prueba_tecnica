@@ -94,6 +94,10 @@ export default {
         .then((res) => res.json())
         .then((data) => console.log(data));
     },
+
+    creater() {
+      this.$emit("chagePage", "Soy el creador!!");
+    },
   },
   name: "CreateUser",
   props: {

@@ -34,6 +34,7 @@ export default {
 
   created() {
     this.getUsers();
+    this.$emit("changePage", "Información usuario recibida");
   },
 
   methods: {
