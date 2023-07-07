@@ -9,9 +9,7 @@ export default {
   },
 
   methods: {
-    home() {
-      this.$emit("changePage", "Sweet home");
-    },
+    home() {},
   },
 };
 </script>

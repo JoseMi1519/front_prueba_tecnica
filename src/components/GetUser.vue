@@ -8,6 +8,7 @@
           <th>Email</th>
           <th>Phone</th>
           <th>Password</th>
+          <th>Borrar</th>
         </tr>
       </thead>
       <tbody>
@@ -16,6 +17,7 @@
           <td>{{ user.email }}</td>
           <td>{{ user.phone }}</td>
           <td>{{ user.password }}</td>
+          <td><button v-on:click="deleteUser(user._id)">Borrar</button></td>
         </tr>
       </tbody>
     </table>
@@ -23,7 +25,7 @@
 </template>
 
 <script>
-import usersList from "../../getUsersResponse.json";
+// import usersList from "../../getUsersResponse.json";
 
 export default {
   data() {
@@ -34,22 +36,49 @@ export default {
 
   created() {
     this.getUsers();
-    this.$emit("changePage", "Información usuario recibida");
   },
 
   methods: {
     getUsers() {
-      this.users = usersList.users;
-      console.log(usersList);
-      // fetch("http://localhost:3001/user", {
-      //   method: "GET",
-      //   headers: {
-      //     Accept: "application/json",
-      //     "Content-type": "application/json",
-      //   },
-      // })
-      //   .then((res) => res.json())
-      //   .then((data) => console.log(data));
+      // this.users = usersList.users;
+      // console.log(usersList);
+      fetch("http://localhost:3001/user", {
+        method: "GET",
+        headers: {
+          Accept: "application/json",
+          "Content-type": "application/json",
+        },
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          console.log(data);
+          this.users = data.user;
+        });
+    },
+
+    fillTable() {
+      this.$emit("fillTable");
+    },
+
+    deleteUser(userId) {
+      fetch("http://localhost:3001/user", {
+        method: "DELETE",
+        body: JSON.stringify({ userId }),
+        headers: {
+          Accept: "application/json",
+          "Content-type": "application/json",
+        },
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          if (data.user === null) {
+            this.errorMessage();
+            return;
+          }
+          console.log(data);
+        });
+
+      // this.manageResponse();
     },
   },
 
@@ -75,5 +104,10 @@ li {
 }
 a {
   color: #42b983;
+}
+.col-md-7 {
+  height: 100%;
+  width: 100%;
+  overflow: auto;
 }
 </style>

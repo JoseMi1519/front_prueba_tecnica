@@ -1,15 +1,21 @@
 <template>
   <div>
+    <br /><br /><br />
     <h2>Iniciar sesión</h2>
     <form @submit.prevent="login">
-      <label for="username">Nombre de usuario:</label>
-      <input type="text" id="username" v-model="username" required />
+      <label class="username" for="username">Nombre de usuario:</label>
+      <input
+        class="inputUsername"
+        type="text"
+        id="username"
+        v-model="username"
+        required
+      />
 
       <label for="password">Contraseña:</label>
       <input type="password" id="password" v-model="password" required />
-
-      <button type="submit">Iniciar sesión</button>
     </form>
+    <button class="button" type="submit">Iniciar sesión</button>
   </div>
 </template>
 
@@ -33,3 +39,15 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+.username {
+  margin-top: 5rem;
+}
+.button {
+  margin-top: 5rem;
+}
+.inputUsername {
+  margin-right: 3rem;
+}
+</style>

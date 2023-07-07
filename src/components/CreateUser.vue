@@ -74,6 +74,10 @@ class User {
   }
 }
 export default {
+  name: "CreateUser",
+  props: {
+    msg: String,
+  },
   data() {
     return {
       user: new User(),
@@ -82,7 +86,6 @@ export default {
 
   methods: {
     createUser() {
-      console.log(this.user);
       fetch("http://localhost:3001/user", {
         method: "POST",
         body: JSON.stringify(this.user),
@@ -92,16 +95,26 @@ export default {
         },
       })
         .then((res) => res.json())
-        .then((data) => console.log(data));
+        .then((data) => {
+          if (data.user === null) {
+            this.errorMessage();
+            return;
+          }
+        });
+
+      // this.manageResponse();
+
+      this.viewUsers();
     },
 
-    creater() {
-      this.$emit("chagePage", "Soy el creador!!");
+    viewUsers() {
+      console.log("llega a quie");
+      this.$emit("changePage", "getUserToggle");
     },
-  },
-  name: "CreateUser",
-  props: {
-    msg: String,
+
+    errorMessage() {
+      this.$emit("errorMessage", "El email ya existe.");
+    },
   },
 };
 </script>
@@ -116,7 +129,7 @@ export default {
 .img-user {
   height: 60%;
   margin-left: 5rem;
-  margin-top: 1rem;
+  margin-top: 1.5rem;
   border-radius: 20px;
   opacity: 0.7;
 }
@@ -125,7 +138,9 @@ export default {
   grid-template-columns: 1fr 1fr;
   gap: 0rem;
   height: 500px;
-  background-image: linear-gradient(pink, rgb(104, 104, 236) 60%);
+  margin-left: 0%;
+  margin-right: 0%;
+  /* background-image: linear-gradient(pink, rgb(104, 104, 236) 60%); */
 }
 
 .form-container {
